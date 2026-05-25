@@ -7,6 +7,7 @@ const utils = require('../utils');
 const nodemailer = require('nodemailer');
 var formidable = require('formidable');
 var fs = require('fs');
+const path = require('path');
 
 // Get All
 module.exports.getAll = async (req, res, next) => {
@@ -137,7 +138,13 @@ module.exports.updatePicture = (req, res, next) => {
 				var newFileName = utils.timestampFilename(files.filetoupload.name);
 
 				var oldpath = files.filetoupload.path;
-				var newpath = __basedir + '/public/uploads/pictures/' + newFileName;
+				var newpath = path.join(
+					__basedir,
+					'public',
+					'uploads',
+					'pictures',
+					newFileName
+				);
 				fs.rename(oldpath, newpath, function (err) {
 					if (err) {
 						return next(err);

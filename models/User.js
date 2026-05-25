@@ -35,10 +35,6 @@ module.exports.UserModel = (sequelize) => {
 				allowNull: false,
 				defaultValue: false,
 			},
-			password: {
-				type: DataTypes.STRING,
-				allowNull: true,
-			},
 			token: {
 				type: DataTypes.STRING,
 				allowNull: true,
